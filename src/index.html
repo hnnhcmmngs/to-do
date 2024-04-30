@@ -15,5 +15,26 @@
     </div>
     <div id="tasks"></div>
     <div id="footer">Made by me!</div>
+    <dialog id="taskinput" open>
+        <p>New To-Do Item:</p>
+        <form method="dialog" id="taskform">
+            <label for="title">TITLE</label>
+            <input type="text" name="title" id="title" required>
+            <label for="description">DESCRIPTION</label>
+            <input type="text" name="description" id="description" required>
+            <label for="duedate">DUE DATE</label>
+            <input type="datetime-local" name="duedate" id="duedate" required>
+            <label for="priority">PRIORITY</label>
+            <select name="priority" id="priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            <div>
+                <input type="submit" id="addtask" value="Add Task">
+                <input type="submit" id="cancel" value="Cancel" formnovalidate>
+            </div>
+        </form>
+    </dialog>
 </body>
 </html>
