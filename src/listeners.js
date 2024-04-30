@@ -1,3 +1,5 @@
+import toDos from './todo';
+
 const listeners = (function() {
     const newtask = document.querySelector("#newtask");
     const taskinput = document.querySelector("#taskinput");
@@ -15,12 +17,23 @@ const listeners = (function() {
             e.preventDefault();
             taskform.reset();
             taskinput.close();
-        })
+        });
+    }
+
+    const listenSubmitTask = () => {
+        taskform.addEventListener("submit", () => {
+            toDos.addTask(document.querySelector("#title").value,
+                          document.querySelector("#description").value,
+                          document.querySelector("#duedate").value,
+                          document.querySelector("#priority").value);
+            taskform.reset();
+        });
     }
 
     return {
         listenNewTask,
-        listenCancelTask
+        listenCancelTask,
+        listenSubmitTask
     }
 })();
 

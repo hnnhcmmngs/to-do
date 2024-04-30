@@ -4,3 +4,4 @@ import listeners from './listeners';
 
 listeners.listenNewTask();
 listeners.listenCancelTask();
+listeners.listenSubmitTask();

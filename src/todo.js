@@ -13,6 +13,7 @@ const toDos = (function() {
     const addTask = (title, description, dueDate, priority) => {
         const newTask = new ToDo(title, description, dueDate, priority);
         tasks.push(newTask);
+        console.log(tasks);
     }
 
     return {
