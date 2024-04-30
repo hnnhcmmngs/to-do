@@ -1,6 +1,6 @@
 import './style.css';
 import toDos from './todo';
+import listeners from './listeners';
 
-console.log(toDos.tasks);
-toDos.addTask("hello", "hi", "never", "low");
-console.log(toDos.tasks);
+listeners.listenNewTask();
+listeners.listenCancelTask();

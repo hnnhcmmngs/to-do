@@ -13,9 +13,11 @@
         <button>Add Project</button>
         <div id="projects"></div>
     </div>
-    <div id="tasks"></div>
+    <div id="tasks">
+        <button id="newtask">New Task</button>
+    </div>
     <div id="footer">Made by me!</div>
-    <dialog id="taskinput" open>
+    <dialog id="taskinput">
         <p>New To-Do Item:</p>
         <form method="dialog" id="taskform">
             <label for="title">TITLE</label>
@@ -32,7 +34,7 @@
             </select>
             <div>
                 <input type="submit" id="addtask" value="Add Task">
-                <input type="submit" id="cancel" value="Cancel" formnovalidate>
+                <input type="submit" id="taskcancel" value="Cancel" formnovalidate>
             </div>
         </form>
     </dialog>
