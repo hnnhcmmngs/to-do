@@ -1,3 +1,5 @@
+import domHandler from "./dom";
+
 const toDos = (function() {
     const tasks = [];
 
@@ -14,6 +16,7 @@ const toDos = (function() {
         const newTask = new ToDo(title, description, dueDate, priority);
         tasks.push(newTask);
         console.log(tasks);
+        domHandler.addNewTask(newTask);
     }
 
     return {
