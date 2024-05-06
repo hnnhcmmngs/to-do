@@ -5,3 +5,6 @@ import listeners from './listeners';
 listeners.listenNewTask();
 listeners.listenCancelTask();
 listeners.listenSubmitTask();
+
+listeners.listenNewProject();
+listeners.listenCancelProject();

@@ -6,6 +6,11 @@ const listeners = (function() {
     const taskcancel = document.querySelector("#taskcancel");
     const taskform = document.querySelector("#taskform");
 
+    const newproject = document.querySelector("#newproject");
+    const projectinput = document.querySelector("#projectinput");
+    const projectcancel = document.querySelector("#projectcancel");
+    const projectform = document.querySelector("#projectform");
+
     const listenNewTask = () => {
         newtask.addEventListener("click", () => {
             taskinput.showModal();
@@ -30,10 +35,26 @@ const listeners = (function() {
         });
     }
 
+    const listenNewProject = () => {
+        newproject.addEventListener("click", () => {
+            projectinput.showModal();
+        });
+    }
+
+    const listenCancelProject = () => {
+        projectcancel.addEventListener("click", (e) => {
+            e.preventDefault();
+            projectform.reset();
+            projectinput.close();
+        });
+    }
+
     return {
         listenNewTask,
         listenCancelTask,
-        listenSubmitTask
+        listenSubmitTask,
+        listenNewProject,
+        listenCancelProject
     }
 })();
 
