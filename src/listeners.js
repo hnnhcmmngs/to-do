@@ -1,4 +1,5 @@
 import toDos from './todo';
+import projects from './projects';
 
 const listeners = (function() {
     const newtask = document.querySelector("#newtask");
@@ -49,12 +50,20 @@ const listeners = (function() {
         });
     }
 
+    const listenSubmitProject = () => {
+        projectform.addEventListener("submit", () => {
+            projects.addProject(document.querySelector("#name").value);
+            projectform.reset();
+        });
+    }
+
     return {
         listenNewTask,
         listenCancelTask,
         listenSubmitTask,
         listenNewProject,
-        listenCancelProject
+        listenCancelProject,
+        listenSubmitProject
     }
 })();
 
