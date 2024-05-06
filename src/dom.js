@@ -1,5 +1,6 @@
 const domHandler = (function() {
     const tasks = document.querySelector("#tasks");
+    const projects = document.querySelector("#projects");
 
     const addNewTask = (task) => {
         const newTask = document.createElement("div");
@@ -23,8 +24,16 @@ const domHandler = (function() {
         tasks.appendChild(newTask);
     }
 
+    const addNewProject = (name) => {
+        const newProject = document.createElement("div");
+        newProject.textContent = name;
+
+        projects.appendChild(newProject);
+    }
+
     return {
-        addNewTask
+        addNewTask,
+        addNewProject
     }
 })();
 
