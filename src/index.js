@@ -1,9 +1,9 @@
 import './style.css';
-import toDos from './todo';
 import listeners from './listeners';
 import domHandler from './dom';
 
 domHandler.showAllProjects();
+listeners.listenAllTasks();
 
 listeners.listenNewTask();
 listeners.listenCancelTask();
