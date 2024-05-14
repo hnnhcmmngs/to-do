@@ -4,6 +4,7 @@ const domHandler = (function() {
 
     const addNewTask = (task) => {
         const newTask = document.createElement("div");
+        newTask.style.border = "1px solid black";
 
         const title = document.createElement("div");
         title.textContent = task.title;
