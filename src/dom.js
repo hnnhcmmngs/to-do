@@ -1,6 +1,7 @@
 const domHandler = (function() {
     const tasks = document.querySelector("#tasks");
     const projects = document.querySelector("#projects");
+    const newtask = document.querySelector("#newtask");
 
     const addNewTask = (task) => {
         const newTask = document.createElement("div");
@@ -29,12 +30,21 @@ const domHandler = (function() {
         const newProject = document.createElement("div");
         newProject.textContent = name;
 
+        newProject.addEventListener("click", () => {
+            newtask.style.visibility = "visible";
+        });
+
         projects.appendChild(newProject);
+    }
+
+    const showAllProjects = () => {
+        newtask.style.visibility = "hidden";
     }
 
     return {
         addNewTask,
-        addNewProject
+        addNewProject,
+        showAllProjects
     }
 })();
 
