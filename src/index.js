@@ -12,3 +12,5 @@ listeners.listenSubmitTask();
 listeners.listenNewProject();
 listeners.listenCancelProject();
 listeners.listenSubmitProject();
+
+listeners.listenProjectNameInput();

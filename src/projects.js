@@ -18,11 +18,19 @@ const projects = (function() {
         return currentProject;
     }
 
+    const checkProjectNameAvailable = (name) => {
+        if (projectList.includes(name)) {
+            return false;
+        }
+        return true;
+    } 
+
     return {
         projectList,
         addProject,
         setCurrentProject,
-        getCurrentProject
+        getCurrentProject,
+        checkProjectNameAvailable
     }
 })();
 

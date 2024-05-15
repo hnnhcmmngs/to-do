@@ -15,6 +15,8 @@ const listeners = (function() {
 
     const alltasks = document.querySelector("#alltasks");
 
+    const nameinput = document.querySelector("#name");
+
     const listenNewTask = () => {
         newtask.addEventListener("click", () => {
             taskinput.showModal();
@@ -55,8 +57,8 @@ const listeners = (function() {
     }
 
     const listenSubmitProject = () => {
-        projectform.addEventListener("submit", () => {
-            projects.addProject(document.querySelector("#name").value);
+        projectform.addEventListener("submit", (e) => {
+            projects.addProject(nameinput.value);
             projectform.reset();
         });
     }
@@ -67,6 +69,16 @@ const listeners = (function() {
         });
     }
 
+    const listenProjectNameInput = () => {
+        nameinput.addEventListener("input", (e) => {
+            if (projects.checkProjectNameAvailable(nameinput.value)) {
+                nameinput.setCustomValidity("");
+            } else {
+                nameinput.setCustomValidity("Please enter a unique project name.");
+            }
+        });
+    }
+
     return {
         listenNewTask,
         listenCancelTask,
@@ -74,7 +86,8 @@ const listeners = (function() {
         listenNewProject,
         listenCancelProject,
         listenSubmitProject,
-        listenAllTasks
+        listenAllTasks,
+        listenProjectNameInput
     }
 })();
 
