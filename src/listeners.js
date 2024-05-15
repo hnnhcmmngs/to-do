@@ -34,7 +34,8 @@ const listeners = (function() {
             toDos.addTask(document.querySelector("#title").value,
                           document.querySelector("#description").value,
                           document.querySelector("#duedate").value,
-                          document.querySelector("#priority").value);
+                          document.querySelector("#priority").value,
+                          projects.getCurrentProject());
             taskform.reset();
         });
     }

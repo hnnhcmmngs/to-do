@@ -1,6 +1,8 @@
+import projects from "./projects";
+
 const domHandler = (function() {
     const tasks = document.querySelector("#tasks");
-    const projects = document.querySelector("#projects");
+    const projectsdisplay = document.querySelector("#projects");
     const newtask = document.querySelector("#newtask");
 
     const addNewTask = (task) => {
@@ -23,6 +25,10 @@ const domHandler = (function() {
         priority.textContent = task.priority;
         newTask.appendChild(priority);
 
+        const project = document.createElement("div");
+        project.textContent = task.project;
+        newTask.appendChild(project);
+
         tasks.appendChild(newTask);
     }
 
@@ -32,9 +38,10 @@ const domHandler = (function() {
 
         newProject.addEventListener("click", () => {
             newtask.style.visibility = "visible";
+            projects.setCurrentProject(newProject.textContent);
         });
 
-        projects.appendChild(newProject);
+        projectsdisplay.appendChild(newProject);
     }
 
     const showAllProjects = () => {
