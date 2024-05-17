@@ -1,8 +1,7 @@
 import domHandler from "./dom";
+import projects from "./projects";
 
 const toDos = (function() {
-    const tasks = [];
-
     class ToDo {
         constructor(title, description, dueDate, priority, project) {
             this.title = title;
@@ -15,13 +14,11 @@ const toDos = (function() {
 
     const addTask = (title, description, dueDate, priority, project) => {
         const newTask = new ToDo(title, description, dueDate, priority, project);
-        tasks.push(newTask);
-        console.log(tasks);
+        projects.addTaskToProject(project, newTask);
         domHandler.addNewTask(newTask);
     }
 
     return {
-        tasks,
         addTask
     }
 })();

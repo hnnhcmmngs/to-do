@@ -1,11 +1,11 @@
 import domHandler from "./dom";
 
 const projects = (function() {
-    const projectList = [];
+    const projectList = new Map();
     let currentProject = "all";
 
     const addProject = (name) => {
-        projectList.push(name);
+        projectList.set(name, []);
         console.log(projectList);
         domHandler.addNewProject(name);
     }
@@ -19,18 +19,24 @@ const projects = (function() {
     }
 
     const checkProjectNameAvailable = (name) => {
-        if (projectList.includes(name)) {
+        if (projectList.has(name)) {
             return false;
         }
         return true;
-    } 
+    }
+
+    const addTaskToProject = (name, task) => {
+        projectList.get(name).push(task);
+        console.log(projectList);
+    }
 
     return {
         projectList,
         addProject,
         setCurrentProject,
         getCurrentProject,
-        checkProjectNameAvailable
+        checkProjectNameAvailable,
+        addTaskToProject
     }
 })();
 
