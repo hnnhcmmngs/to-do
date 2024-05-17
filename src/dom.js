@@ -71,10 +71,18 @@ const domHandler = (function() {
         }
     }
 
+    const displayProjectList = () => {
+        const projectMap = projects.getProjectList();
+        for (const [name, items] of projectMap) {
+            addNewProject(name);
+        }
+    }
+
     return {
         addNewTask,
         addNewProject,
-        showAllProjects
+        showAllProjects,
+        displayProjectList
     }
 })();
 

@@ -1,12 +1,12 @@
 import domHandler from "./dom";
 
 const projects = (function() {
-    const projectList = new Map();
+    let projectList = new Map();
     let currentProject = "all";
 
     const addProject = (name) => {
         projectList.set(name, []);
-        console.log(projectList);
+        localStorage.setItem("projectMap", JSON.stringify(Array.from(projectList.entries())));
         domHandler.addNewProject(name);
     }
 
@@ -27,11 +27,15 @@ const projects = (function() {
 
     const addTaskToProject = (name, task) => {
         projectList.get(name).push(task);
-        console.log(projectList);
+        localStorage.setItem("projectMap", JSON.stringify(Array.from(projectList.entries())));
     }
 
     const getProjectList = () => {
         return projectList;
+    }
+
+    const setProjectList = (storage) => {
+        projectList = storage;
     }
 
     return {
@@ -40,7 +44,8 @@ const projects = (function() {
         getCurrentProject,
         checkProjectNameAvailable,
         addTaskToProject,
-        getProjectList
+        getProjectList,
+        setProjectList
     }
 })();
 
