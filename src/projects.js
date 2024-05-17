@@ -30,13 +30,17 @@ const projects = (function() {
         console.log(projectList);
     }
 
+    const getProjectList = () => {
+        return projectList;
+    }
+
     return {
-        projectList,
         addProject,
         setCurrentProject,
         getCurrentProject,
         checkProjectNameAvailable,
-        addTaskToProject
+        addTaskToProject,
+        getProjectList
     }
 })();
 

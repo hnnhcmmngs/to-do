@@ -5,7 +5,7 @@ const domHandler = (function() {
     const projectsdisplay = document.querySelector("#projects");
     const newtask = document.querySelector("#newtask");
 
-    const addNewTask = (task) => {
+    const createTaskDisplay = (task) => {
         const newTask = document.createElement("div");
         newTask.style.border = "1px solid black";
 
@@ -29,6 +29,11 @@ const domHandler = (function() {
         project.textContent = task.project;
         newTask.appendChild(project);
 
+        return newTask;
+    }
+
+    const addNewTask = (task) => {
+        const newTask = createTaskDisplay(task);
         tasks.appendChild(newTask);
     }
 
@@ -46,6 +51,14 @@ const domHandler = (function() {
 
     const showAllProjects = () => {
         newtask.style.visibility = "hidden";
+        tasks.innerHTML = "";
+        const allProjects = projects.getProjectList();
+        for (const [name, items] of allProjects) {
+            for (const item of items) {
+                const itemdiv = createTaskDisplay(item);
+                tasks.appendChild(itemdiv);
+            }
+        }
     }
 
     return {
