@@ -29,6 +29,16 @@ const domHandler = (function() {
         project.textContent = task.project;
         newTask.appendChild(project);
 
+        const editButton = document.createElement("button");
+        editButton.textContent = "Edit";
+        editButton.classList = "edittask";
+        newTask.appendChild(editButton);
+
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.classList = "deletetask";
+        newTask.appendChild(deleteButton);
+
         return newTask;
     }
 
