@@ -42,8 +42,8 @@ const domHandler = (function() {
         newProject.textContent = name;
 
         newProject.addEventListener("click", () => {
-            newtask.style.visibility = "visible";
             projects.setCurrentProject(newProject.textContent);
+            showSelectedProjectTasks(newProject.textContent);
         });
 
         projectsdisplay.appendChild(newProject);
@@ -58,6 +58,16 @@ const domHandler = (function() {
                 const itemdiv = createTaskDisplay(item);
                 tasks.appendChild(itemdiv);
             }
+        }
+    }
+
+    const showSelectedProjectTasks = (name) =>{ 
+        newtask.style.visibility = "visible";
+        tasks.innerHTML = "";
+        const items = projects.getProjectList().get(name);
+        for (const item of items) {
+            const itemdiv = createTaskDisplay(item);
+            tasks.appendChild(itemdiv);
         }
     }
 
