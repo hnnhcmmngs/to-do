@@ -21,3 +21,4 @@ listeners.listenCancelProject();
 listeners.listenSubmitProject();
 
 listeners.listenProjectNameInput();
+listeners.listenTaskTitleInput();

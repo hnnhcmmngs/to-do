@@ -14,8 +14,8 @@ const listeners = (function() {
     const projectform = document.querySelector("#projectform");
 
     const alltasks = document.querySelector("#alltasks");
-
     const nameinput = document.querySelector("#name");
+    const tasktitleinput = document.querySelector("#title");
 
     const listenNewTask = () => {
         newtask.addEventListener("click", () => {
@@ -79,6 +79,16 @@ const listeners = (function() {
         });
     }
 
+    const listenTaskTitleInput = () => {
+        tasktitleinput.addEventListener("input", (e) => {
+            if (projects.checkTaskNameAvailable(tasktitleinput.value, projects.getCurrentProject())) {
+                tasktitleinput.setCustomValidity("");
+            } else {
+                tasktitleinput.setCustomValidity("Please enter a unique task name.");
+            }
+        })
+    }
+
     return {
         listenNewTask,
         listenCancelTask,
@@ -87,7 +97,8 @@ const listeners = (function() {
         listenCancelProject,
         listenSubmitProject,
         listenAllTasks,
-        listenProjectNameInput
+        listenProjectNameInput,
+        listenTaskTitleInput
     }
 })();
 

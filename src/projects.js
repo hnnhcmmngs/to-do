@@ -25,6 +25,15 @@ const projects = (function() {
         return true;
     }
 
+    const checkTaskNameAvailable = (taskName, projectName) => {
+        for (const todo of projectList.get(projectName)) {
+            if (todo.title === taskName) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     const addTaskToProject = (name, task) => {
         projectList.get(name).push(task);
         localStorage.setItem("projectMap", JSON.stringify(Array.from(projectList.entries())));
@@ -44,6 +53,7 @@ const projects = (function() {
         setCurrentProject,
         getCurrentProject,
         checkProjectNameAvailable,
+        checkTaskNameAvailable,
         addTaskToProject,
         getProjectList,
         setProjectList
