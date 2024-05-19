@@ -28,6 +28,7 @@ const projects = (function() {
     const addTaskToProject = (name, task) => {
         projectList.get(name).push(task);
         localStorage.setItem("projectMap", JSON.stringify(Array.from(projectList.entries())));
+        console.log(projectList);
     }
 
     const getProjectList = () => {
