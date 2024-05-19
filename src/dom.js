@@ -1,4 +1,5 @@
 import projects from "./projects";
+import toDos from "./todo";
 
 const domHandler = (function() {
     const tasks = document.querySelector("#tasks");
@@ -62,12 +63,10 @@ const domHandler = (function() {
     const showAllProjects = () => {
         newtask.style.visibility = "hidden";
         tasks.innerHTML = "";
-        const allProjects = projects.getProjectList();
-        for (const [name, items] of allProjects) {
-            for (const item of items) {
-                const itemdiv = createTaskDisplay(item);
-                tasks.appendChild(itemdiv);
-            }
+        const allTasks = toDos.getTaskList();
+        for (const task of allTasks) {
+            const itemdiv = createTaskDisplay(task);
+            tasks.appendChild(itemdiv);
         }
     }
 
