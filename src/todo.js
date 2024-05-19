@@ -34,10 +34,17 @@ const toDos = (function() {
         return allTasksSorted;
     }
 
+    const deleteTask = (task) => {
+        allTasksSorted = allTasksSorted.filter((todo) => !(todo.title === task.title && todo.project === task.project));
+        localStorage.setItem("taskList", JSON.stringify(allTasksSorted));
+        console.log(allTasksSorted);
+    }
+
     return {
         addTask,
         setTaskList,
-        getTaskList
+        getTaskList,
+        deleteTask
     }
 })();
 

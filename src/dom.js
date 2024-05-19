@@ -38,6 +38,15 @@ const domHandler = (function() {
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "Delete";
         deleteButton.classList = "deletetask";
+        deleteButton.addEventListener("click", () => {
+            toDos.deleteTask(task);
+            projects.deleteTaskFromProject(task);
+            if (projects.getCurrentProject() === "all") {
+                showAllProjects();
+            } else {
+                showSelectedProjectTasks(task.project);
+            }
+        });
         newTask.appendChild(deleteButton);
 
         return newTask;

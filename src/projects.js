@@ -48,6 +48,12 @@ const projects = (function() {
         projectList = storage;
     }
 
+    const deleteTaskFromProject = (task) => {
+        projectList.set(task.project, projectList.get(task.project).filter((todo) => !(todo.title === task.title)));
+        localStorage.setItem("projectMap", JSON.stringify(Array.from(projectList.entries())));
+        console.log(projectList);
+    }
+
     return {
         addProject,
         setCurrentProject,
@@ -56,7 +62,8 @@ const projects = (function() {
         checkTaskNameAvailable,
         addTaskToProject,
         getProjectList,
-        setProjectList
+        setProjectList,
+        deleteTaskFromProject
     }
 })();
 

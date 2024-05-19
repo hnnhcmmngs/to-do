@@ -65,6 +65,7 @@ const listeners = (function() {
 
     const listenAllTasks = () => {
         alltasks.addEventListener("click", () => {
+            projects.setCurrentProject("all");
             domHandler.showAllProjects();
         });
     }
