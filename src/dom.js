@@ -39,12 +39,16 @@ const domHandler = (function() {
         const editButton = document.createElement("button");
         editButton.textContent = "Edit";
         editButton.classList = "edittask";
+        editButton.addEventListener("click", (e) => {
+            e.stopPropagation();
+        });
         newTask.appendChild(editButton);
 
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "Delete";
         deleteButton.classList = "deletetask";
-        deleteButton.addEventListener("click", () => {
+        deleteButton.addEventListener("click", (e) => {
+            e.stopPropagation();
             toDos.deleteTask(task);
             projects.deleteTaskFromProject(task);
             if (projects.getCurrentProject() === "all") {
@@ -54,6 +58,7 @@ const domHandler = (function() {
             }
         });
         newTask.appendChild(deleteButton);
+
         newTask.addEventListener("click", () => {
             expandtitle.textContent = task.title;
             expanddesc.textContent = task.description;
