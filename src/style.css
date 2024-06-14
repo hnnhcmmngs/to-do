@@ -23,3 +23,7 @@ body {
 #footer {
     grid-column: 1 / 3;
 }
+
+.pointer:hover {
+    cursor: pointer;
+}

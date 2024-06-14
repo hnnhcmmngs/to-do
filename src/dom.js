@@ -5,18 +5,24 @@ const domHandler = (function() {
     const tasks = document.querySelector("#tasks");
     const projectsdisplay = document.querySelector("#projects");
     const newtask = document.querySelector("#newtask");
+    const expandmodal = document.querySelector("#expandtask");
+    const expandtitle = document.querySelector("#expandtitle");
+    const expanddesc = document.querySelector("#expanddesc");
+    const expanddate = document.querySelector("#expanddate");
+    const expandpriority = document.querySelector("#expandpriority");
 
     const createTaskDisplay = (task) => {
         const newTask = document.createElement("div");
+        newTask.classList = "pointer";
         newTask.style.border = "1px solid black";
 
         const title = document.createElement("div");
         title.textContent = task.title;
         newTask.appendChild(title);
 
-        const description = document.createElement("div");
-        description.textContent = task.description;
-        newTask.appendChild(description);
+        // const description = document.createElement("div");
+        // description.textContent = task.description;
+        // newTask.appendChild(description);
 
         const dueDate = document.createElement("div");
         dueDate.textContent = task.dueDate;
@@ -26,9 +32,9 @@ const domHandler = (function() {
         priority.textContent = task.priority;
         newTask.appendChild(priority);
 
-        const project = document.createElement("div");
-        project.textContent = task.project;
-        newTask.appendChild(project);
+        // const project = document.createElement("div");
+        // project.textContent = task.project;
+        // newTask.appendChild(project);
 
         const editButton = document.createElement("button");
         editButton.textContent = "Edit";
@@ -48,6 +54,13 @@ const domHandler = (function() {
             }
         });
         newTask.appendChild(deleteButton);
+        newTask.addEventListener("click", () => {
+            expandtitle.textContent = task.title;
+            expanddesc.textContent = task.description;
+            expanddate.textContent = task.dueDate;
+            expandpriority.textContent = task.priority;
+            expandmodal.showModal();
+        });
 
         return newTask;
     }

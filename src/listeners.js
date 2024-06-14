@@ -17,6 +17,9 @@ const listeners = (function() {
     const nameinput = document.querySelector("#name");
     const tasktitleinput = document.querySelector("#title");
 
+    const expandtask = document.querySelector("#expandtask");
+    const expandclose = document.querySelector("#expandclose");
+
     const listenNewTask = () => {
         newtask.addEventListener("click", () => {
             taskinput.showModal();
@@ -87,7 +90,13 @@ const listeners = (function() {
             } else {
                 tasktitleinput.setCustomValidity("Please enter a unique task name.");
             }
-        })
+        });
+    }
+
+    const listenCloseExpand = () => {
+        expandclose.addEventListener("click", () => {
+            expandtask.close();
+        });
     }
 
     return {
@@ -99,7 +108,8 @@ const listeners = (function() {
         listenSubmitProject,
         listenAllTasks,
         listenProjectNameInput,
-        listenTaskTitleInput
+        listenTaskTitleInput,
+        listenCloseExpand
     }
 })();
 

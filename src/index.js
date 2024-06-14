@@ -22,3 +22,5 @@ listeners.listenSubmitProject();
 
 listeners.listenProjectNameInput();
 listeners.listenTaskTitleInput();
+
+listeners.listenCloseExpand();
