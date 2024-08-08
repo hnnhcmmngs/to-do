@@ -53,6 +53,7 @@ const domHandler = (function() {
             editduedate.value = task.dueDate;
             editpriority.value = task.priority;
             currentToDoEdit = task;
+            edittitle.setCustomValidity("");
             edittask.showModal();
         });
         newTask.appendChild(editButton);

@@ -118,6 +118,21 @@ const listeners = (function() {
                            document.querySelector("#editduedate").value,
                            document.querySelector("#editpriority").value);
         });
+        editform.reset();
+    }
+
+    const listenEditTitleInput = () => {
+        const edittitleinput = document.querySelector("#edittitle");
+        edittitleinput.addEventListener("input", (e) => {
+            console.log(domHandler.getCurrentToDoEdit().title);
+            console.log(domHandler.getCurrentToDoEdit().project);
+            console.log(edittitleinput.value === domHandler.getCurrentToDoEdit().title);
+            if (projects.checkTaskNameAvailable(edittitleinput.value, domHandler.getCurrentToDoEdit().project) || edittitleinput.value === domHandler.getCurrentToDoEdit().title) {
+                edittitleinput.setCustomValidity("");
+            } else {
+                edittitleinput.setCustomValidity("Please enter a unique task name.");
+            }
+        });
     }
 
     return {
@@ -132,7 +147,8 @@ const listeners = (function() {
         listenTaskTitleInput,
         listenCloseExpand,
         listenCancelEdit,
-        listenSubmitEdit
+        listenSubmitEdit,
+        listenEditTitleInput
     }
 })();
 

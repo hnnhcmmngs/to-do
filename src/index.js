@@ -27,3 +27,4 @@ listeners.listenCloseExpand();
 
 listeners.listenCancelEdit();
 listeners.listenSubmitEdit();
+listeners.listenEditTitleInput();
