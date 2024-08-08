@@ -10,6 +10,13 @@ const domHandler = (function() {
     const expanddesc = document.querySelector("#expanddesc");
     const expanddate = document.querySelector("#expanddate");
     const expandpriority = document.querySelector("#expandpriority");
+    const edittask = document.querySelector("#edittask");
+    const edittitle = document.querySelector("#edittitle");
+    const editdesc = document.querySelector("#editdescription");
+    const editduedate = document.querySelector("#editduedate");
+    const editpriority = document.querySelector("#editpriority");
+
+    let currentToDoEdit = undefined;
 
     const createTaskDisplay = (task) => {
         const newTask = document.createElement("div");
@@ -41,6 +48,12 @@ const domHandler = (function() {
         editButton.classList = "edittask";
         editButton.addEventListener("click", (e) => {
             e.stopPropagation();
+            edittitle.value = task.title;
+            editdesc.value = task.description;
+            editduedate.value = task.dueDate;
+            editpriority.value = task.priority;
+            currentToDoEdit = task;
+            edittask.showModal();
         });
         newTask.appendChild(editButton);
 
@@ -114,11 +127,16 @@ const domHandler = (function() {
         }
     }
 
+    const getCurrentToDoEdit = () => {
+        return currentToDoEdit;
+    }
+
     return {
         addNewTask,
         addNewProject,
         showAllProjects,
-        displayProjectList
+        displayProjectList,
+        getCurrentToDoEdit
     }
 })();
 

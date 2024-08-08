@@ -54,6 +54,17 @@ const projects = (function() {
         console.log(projectList);
     }
 
+    const editTaskInProjet = (project, oldtitle, newtitle, newdesc, newdate, newpriority) => {
+        const idx = projectList.get(project).findIndex(x => x.title === oldtitle);
+        projectList.get(project)[idx].title = newtitle;
+        projectList.get(project)[idx].description = newdesc;
+        projectList.get(project)[idx].dueDate = newdate;
+        projectList.get(project)[idx].priority = newpriority;
+        console.log(projectList.get(project));
+        console.log(idx);
+        localStorage.setItem("projectMap", JSON.stringify(Array.from(projectList.entries())));
+    }
+
     return {
         addProject,
         setCurrentProject,
@@ -63,7 +74,8 @@ const projects = (function() {
         addTaskToProject,
         getProjectList,
         setProjectList,
-        deleteTaskFromProject
+        deleteTaskFromProject,
+        editTaskInProjet
     }
 })();
 

@@ -20,6 +20,10 @@ const listeners = (function() {
     const expandtask = document.querySelector("#expandtask");
     const expandclose = document.querySelector("#expandclose");
 
+    const editform = document.querySelector("#editform");
+    const edittask = document.querySelector("#edittask");
+    const editcancel = document.querySelector("#editcancel");
+
     const listenNewTask = () => {
         newtask.addEventListener("click", () => {
             taskinput.showModal();
@@ -99,6 +103,23 @@ const listeners = (function() {
         });
     }
 
+    const listenCancelEdit = () => {
+        editcancel.addEventListener("click", (e) => {
+            e.preventDefault();
+            edittask.close();
+        });
+    }
+
+    const listenSubmitEdit = () => {
+        editform.addEventListener("submit", () => {
+            toDos.editTask(domHandler.getCurrentToDoEdit(), 
+                           document.querySelector("#edittitle").value,
+                           document.querySelector("#editdescription").value,
+                           document.querySelector("#editduedate").value,
+                           document.querySelector("#editpriority").value);
+        });
+    }
+
     return {
         listenNewTask,
         listenCancelTask,
@@ -109,7 +130,9 @@ const listeners = (function() {
         listenAllTasks,
         listenProjectNameInput,
         listenTaskTitleInput,
-        listenCloseExpand
+        listenCloseExpand,
+        listenCancelEdit,
+        listenSubmitEdit
     }
 })();
 

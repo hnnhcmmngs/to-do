@@ -40,11 +40,24 @@ const toDos = (function() {
         console.log(allTasksSorted);
     }
 
+    const editTask = (task, newtitle, newdesc, newdate, newpriority) => {
+        const oldtitle = task.title;
+        const idx = allTasksSorted.findIndex(x => x.title === oldtitle && x.project === task.project);
+        allTasksSorted[idx].title = newtitle;
+        allTasksSorted[idx].description = newdesc;
+        allTasksSorted[idx].dueDate = newdate;
+        allTasksSorted[idx].priority = newpriority;
+        projects.editTaskInProjet(task.project, oldtitle, newtitle, newdesc, newdate, newpriority);
+        console.log(allTasksSorted[idx]);
+        localStorage.setItem("taskList", JSON.stringify(allTasksSorted));
+    }
+
     return {
         addTask,
         setTaskList,
         getTaskList,
-        deleteTask
+        deleteTask,
+        editTask
     }
 })();
 

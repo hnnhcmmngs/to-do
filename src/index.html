@@ -57,5 +57,26 @@
         <div id="expandpriority"></div>
         <button id="expandclose">Close</button>
     </dialog>
+    <dialog id="edittask">
+        <p>Edit To-Do Item:</p>
+        <form method="dialog" id="editform">
+            <label for="edittitle">TITLE</label>
+            <input type="text" name="edittitle" id="edittitle" required>
+            <label for="editdescription">DESCRIPTION</label>
+            <input type="text" name="editdescription" id="editdescription" required>
+            <label for="editduedate">DUE DATE</label>
+            <input type="date" name="editduedate" id="editduedate" required>
+            <label for="editpriority">PRIORITY</label>
+            <select name="editpriority" id="editpriority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            <div>
+                <input type="submit" id="updatetask" value="Update Task">
+                <input type="submit" id="editcancel" value="Cancel" formnovalidate>
+            </div>
+        </form>
+    </dialog>
 </body>
 </html>

@@ -24,3 +24,6 @@ listeners.listenProjectNameInput();
 listeners.listenTaskTitleInput();
 
 listeners.listenCloseExpand();
+
+listeners.listenCancelEdit();
+listeners.listenSubmitEdit();
