@@ -63,6 +63,12 @@ const projects = (function() {
         console.log(projectList.get(project));
         console.log(idx);
         localStorage.setItem("projectMap", JSON.stringify(Array.from(projectList.entries())));
+
+        if (currentProject === "all") {
+            domHandler.showAllProjects();
+        } else {
+            domHandler.showSelectedProjectTasks(currentProject);
+        }
     }
 
     return {

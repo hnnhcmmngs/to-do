@@ -135,6 +135,7 @@ const domHandler = (function() {
         addNewTask,
         addNewProject,
         showAllProjects,
+        showSelectedProjectTasks,
         displayProjectList,
         getCurrentToDoEdit
     }
