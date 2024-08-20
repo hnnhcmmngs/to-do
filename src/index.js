@@ -3,6 +3,7 @@ import listeners from './listeners';
 import domHandler from './dom';
 import projects from './projects';
 import toDos from './todo';
+import { loadImages } from './images';
 
 projects.setProjectList(new Map(JSON.parse(localStorage.getItem("projectMap"))));
 let taskStorage = localStorage.getItem("taskList");
@@ -28,3 +29,5 @@ listeners.listenCloseExpand();
 listeners.listenCancelEdit();
 listeners.listenSubmitEdit();
 listeners.listenEditTitleInput();
+
+loadImages();
