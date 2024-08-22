@@ -7,11 +7,17 @@
 </head>
 <body>
     <div id="header">
-        <img id="logo" height="32px" alt="Checkbox">
-        <div>To-Do</div>
+        <div class="subhead">
+            <img id="logo" height="46px" alt="Checkbox" class="filter">
+            <div>ToDoist</div>
+        </div>
+        <div class="subhead">
+            <div class="cursor">Log in</div>
+            <button id="trial" class="cursor">Start free trial</button>
+        </div>
     </div>
     <div id="sidebar">
-        <button id="alltasks">All Tasks</button>
+        <div id="alltasks">All Tasks</div>
         <div>Projects</div>
         <button id="newproject">Add Project</button>
         <div id="projects"></div>
@@ -20,7 +26,7 @@
         <button id="newtask">New Task</button>
         <div id="tasks"></div>
     </div>
-    <div id="footer">Made by me!</div>
+    <div id="footer">&copy; 2024 ToDoist. All rights reserved.</div>
     <dialog id="taskinput">
         <p>New To-Do Item:</p>
         <form method="dialog" id="taskform">
