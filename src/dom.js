@@ -3,6 +3,7 @@ import toDos from "./todo";
 
 const domHandler = (function() {
     const tasks = document.querySelector("#tasks");
+    const alltasks = document.querySelector("#alltasks");
     const projectsdisplay = document.querySelector("#projects");
     const newtask = document.querySelector("#newtask");
     const expandmodal = document.querySelector("#expandtask");
@@ -92,10 +93,18 @@ const domHandler = (function() {
     const addNewProject = (name) => {
         const newProject = document.createElement("div");
         newProject.textContent = name;
+        newProject.classList = "pointer background";
 
         newProject.addEventListener("click", () => {
             projects.setCurrentProject(newProject.textContent);
             showSelectedProjectTasks(newProject.textContent);
+
+            const activeElements = document.getElementsByClassName("active");
+            for (let i = 0; i < activeElements.length; i++) {
+                activeElements[i].classList.remove("active");
+            }
+
+            newProject.classList.add("active");
         });
 
         projectsdisplay.appendChild(newProject);
@@ -109,6 +118,13 @@ const domHandler = (function() {
             const itemdiv = createTaskDisplay(task);
             tasks.appendChild(itemdiv);
         }
+
+        const activeElements = document.getElementsByClassName("active");
+        for (let i = 0; i < activeElements.length; i++) {
+            activeElements[i].classList.remove("active");
+        }
+
+        alltasks.classList.add("active");
     }
 
     const showSelectedProjectTasks = (name) =>{ 

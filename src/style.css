@@ -61,6 +61,66 @@ body {
     gap: 16px;
 }
 
+#sidebar {
+    padding: 16px 16px 16px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.background {
+    background-color: #1d4ed8;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background: linear-gradient(to left, white 50%, #1d4ed8 50%) right;
+    background-size: 200%;
+    transition: .5s ease-out;
+}
+
+.background:hover {
+    background-position: left;
+    color: white;
+}
+
+.active {
+    background: #1d4ed8;
+    color: white;
+}
+
+#alltasks, #projectheader, #projects > * {
+    padding: 8px 0px 8px 16px;
+}
+
+#alltasks, #projectheader {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#projects > * {
+    font-weight: 500;
+}
+
+#projectheader {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#newproject {
+    transition: transform .5s ease-in-out;
+}
+
+#newproject:hover {
+    transform: rotate(90deg);
+}
+
+#projects {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
 #footer {
     grid-column: 1 / 3;
     padding: 8px;
