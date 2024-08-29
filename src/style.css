@@ -223,6 +223,99 @@ body {
     background-color: #d8491d;
 }
 
+dialog {
+    border: none;
+    border-radius: 18px;
+    padding: 16px;
+    justify-items: space-between;
+    gap: 16px;
+    background-color: #1d4ed8;
+    box-shadow: 0px 5px 10px 0px rgba(30, 27, 75, 0.5);
+    color: white;
+    width: 300px;
+}
+
+dialog > p {
+    height: min-content;
+    margin: 0;
+    font-size: 24px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+form > div:last-child {
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+form input, dialog button {
+    border: none;
+    border-radius: 15px;
+    height: 30px;
+    padding: 0 8px;
+    font-size: 18px;
+    font-family: "Raleway", sans-serif;
+}
+
+form input[type="submit"], dialog button {
+    appearance: none;
+    border: none;
+    border-radius: 15px;
+    height: 30px;
+    width: min-content;
+}
+
+form input[type="submit"]:hover, dialog button:hover {
+    cursor: pointer;
+}
+
+form select {
+    border: none;
+    border-radius: 15px;
+    height: 30px;
+    padding: 0 8px;
+    font-size: 18px;
+    font-family: "Raleway", sans-serif;
+}
+
+#expandtask {
+    font-size: 18px;
+}
+
+#expandtitle {
+    font-size: 32px;
+}
+
+#expandtask > div {
+    margin-bottom: 10px;
+}
+
+dialog > div:last-child {
+    display: flex;
+    justify-content: center;
+}
+
+.validate {
+    color: #1d4ed8;
+    font-weight: 600;
+}
+
+.cancel {
+    color: #d8491d;
+}
+
 @supports (-webkit-appearance: none) or (-moz-appearance: none) {
 .checkbox-wrapper-13 input[type=checkbox] {
     --active: #1d4ed8;

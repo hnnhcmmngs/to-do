@@ -12,6 +12,7 @@ const domHandler = (function() {
     const newtask = document.querySelector("#newtask");
     const expandmodal = document.querySelector("#expandtask");
     const expandtitle = document.querySelector("#expandtitle");
+    const expandproject = document.querySelector("#expandproject");
     const expanddesc = document.querySelector("#expanddesc");
     const expanddate = document.querySelector("#expanddate");
     const expandpriority = document.querySelector("#expandpriority");
@@ -88,9 +89,10 @@ const domHandler = (function() {
 
         newTask.addEventListener("click", () => {
             expandtitle.textContent = task.title;
+            expandproject.textContent = `Project: ${task.project}`;
             expanddesc.textContent = task.description;
-            expanddate.textContent = task.dueDate;
-            expandpriority.textContent = task.priority;
+            expanddate.textContent = `Due date: ${task.dueDate}`;
+            expandpriority.textContent = `Priority: ${task.priority}`;
             expandmodal.showModal();
         });
 

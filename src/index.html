@@ -32,62 +32,83 @@
     </div>
     <div id="footer">&copy; 2024 ToDoist. All rights reserved.</div>
     <dialog id="taskinput">
-        <p>New To-Do Item:</p>
+        <p>New To-Do Item</p>
         <form method="dialog" id="taskform">
-            <label for="title">TITLE</label>
-            <input type="text" name="title" id="title" required>
-            <label for="description">DESCRIPTION</label>
-            <input type="text" name="description" id="description" required>
-            <label for="duedate">DUE DATE</label>
-            <input type="date" name="duedate" id="duedate" required>
-            <label for="priority">PRIORITY</label>
-            <select name="priority" id="priority">
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-            </select>
             <div>
-                <input type="submit" id="addtask" value="Add Task">
-                <input type="submit" id="taskcancel" value="Cancel" formnovalidate>
+                <label for="title">TITLE</label>
+                <input type="text" name="title" id="title" required>
+            </div>
+            <div>
+                <label for="description">DESCRIPTION</label>
+                <input type="text" name="description" id="description" required>
+            </div>
+            <div>
+                <label for="duedate">DUE DATE</label>
+                <input type="date" name="duedate" id="duedate" required>
+            </div>
+            <div>
+                <label for="priority">PRIORITY</label>
+                <select name="priority" id="priority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <div>
+                <input type="submit" id="addtask" class="validate" value="Add Task">
+                <input type="submit" id="taskcancel" class="cancel" value="Cancel" formnovalidate>
             </div>
         </form>
     </dialog>
     <dialog id="projectinput">
-        <p>New Project:</p>
+        <p>New Project</p>
         <form method="dialog" id="projectform">
-            <label for="name">NAME</label>
-            <input type="text" name="name" id="name" required>
             <div>
-                <input type="submit" id="addproject" value="Add Project">
-                <input type="submit" id="projectcancel" value="Cancel" formnovalidate>
+                <label for="name">NAME</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            <div>
+                <input type="submit" id="addproject" class="validate" value="Add Project">
+                <input type="submit" id="projectcancel" class="cancel" value="Cancel" formnovalidate>
             </div>
         </form>
     </dialog>
     <dialog id="expandtask">
-        <div id="expandtitle"></div>
+        <div>
+            <div id="expandtitle"></div>
+            <div id="expandproject"></div>
+        </div>
         <div id="expanddesc"></div>
         <div id="expanddate"></div>
         <div id="expandpriority"></div>
-        <button id="expandclose">Close</button>
+        <div><button id="expandclose" class="cancel">Close</button></div>
     </dialog>
     <dialog id="edittask">
-        <p>Edit To-Do Item:</p>
+        <p>Edit To-Do Item</p>
         <form method="dialog" id="editform">
-            <label for="edittitle">TITLE</label>
-            <input type="text" name="edittitle" id="edittitle" required>
-            <label for="editdescription">DESCRIPTION</label>
-            <input type="text" name="editdescription" id="editdescription" required>
-            <label for="editduedate">DUE DATE</label>
-            <input type="date" name="editduedate" id="editduedate" required>
-            <label for="editpriority">PRIORITY</label>
-            <select name="editpriority" id="editpriority">
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-            </select>
             <div>
-                <input type="submit" id="updatetask" value="Update Task">
-                <input type="submit" id="editcancel" value="Cancel" formnovalidate>
+                <label for="edittitle">TITLE</label>
+                <input type="text" name="edittitle" id="edittitle" required>
+            </div>
+            <div>
+                <label for="editdescription">DESCRIPTION</label>
+                <input type="text" name="editdescription" id="editdescription" required>
+            </div>
+            <div>
+                <label for="editduedate">DUE DATE</label>
+                <input type="date" name="editduedate" id="editduedate" required>
+            </div>
+            <div>
+                <label for="editpriority">PRIORITY</label>
+                <select name="editpriority" id="editpriority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <div>
+                <input type="submit" id="updatetask" class="validate" value="Update Task">
+                <input type="submit" id="editcancel" class="cancel" value="Cancel" formnovalidate>
             </div>
         </form>
     </dialog>
