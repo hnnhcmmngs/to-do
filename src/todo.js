@@ -52,12 +52,19 @@ const toDos = (function() {
         localStorage.setItem("taskList", JSON.stringify(allTasksSorted));
     }
 
+    const deleteProject = (projectName) => {
+        allTasksSorted = allTasksSorted.filter((todo) => !(todo.project === projectName));
+        localStorage.setItem("taskList", JSON.stringify(allTasksSorted));
+        console.log(allTasksSorted);
+    }
+
     return {
         addTask,
         setTaskList,
         getTaskList,
         deleteTask,
-        editTask
+        editTask,
+        deleteProject
     }
 })();
 

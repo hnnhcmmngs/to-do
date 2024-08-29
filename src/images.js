@@ -7,4 +7,7 @@ export const loadImages = () => {
 
     const newproject = document.querySelector("#newproject");
     newproject.src = plus;
+
+    const newtask = document.querySelector("#newtask");
+    newtask.src = plus;
 }

@@ -14,7 +14,7 @@ const projects = (function() {
         currentProject = project;
     }
 
-    const getCurrentProject = (project) => {
+    const getCurrentProject = () => {
         return currentProject;
     }
 
@@ -71,6 +71,12 @@ const projects = (function() {
         }
     }
 
+    const deleteProject = (projectName) => {
+        projectList.delete(projectName);
+        localStorage.setItem("projectMap", JSON.stringify(Array.from(projectList.entries())));
+        console.log(projectList);
+    }
+
     return {
         addProject,
         setCurrentProject,
@@ -81,7 +87,8 @@ const projects = (function() {
         getProjectList,
         setProjectList,
         deleteTaskFromProject,
-        editTaskInProjet
+        editTaskInProjet,
+        deleteProject
     }
 })();
 

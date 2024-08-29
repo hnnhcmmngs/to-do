@@ -1,5 +1,9 @@
 import projects from "./projects";
 import toDos from "./todo";
+import edit from "./img/edit.svg";
+import deleteIcon from "./img/delete.svg";
+import deleteSolid from "./img/delete-solid.svg";
+import { compareAsc, format } from "date-fns";
 
 const domHandler = (function() {
     const tasks = document.querySelector("#tasks");
@@ -21,32 +25,36 @@ const domHandler = (function() {
 
     const createTaskDisplay = (task) => {
         const newTask = document.createElement("div");
-        newTask.classList = "pointer";
-        newTask.style.border = "1px solid black";
+        newTask.classList = `pointer card ${task.priority}`;
+
+        const checkboxWrapper = document.createElement("div");
+        checkboxWrapper.classList = "checkbox-wrapper-13";
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.addEventListener("click", (e) => {
+            e.stopPropagation();
+        });
+        checkboxWrapper.append(checkbox);
+        newTask.appendChild(checkboxWrapper);
+
+        const container = document.createElement("div");
 
         const title = document.createElement("div");
         title.textContent = task.title;
-        newTask.appendChild(title);
-
-        // const description = document.createElement("div");
-        // description.textContent = task.description;
-        // newTask.appendChild(description);
+        title.style.fontSize = "18px";
+        title.style.fontWeight = "500";
+        container.appendChild(title);
 
         const dueDate = document.createElement("div");
-        dueDate.textContent = task.dueDate;
-        newTask.appendChild(dueDate);
+        dueDate.textContent = format(new Date(task.dueDate), "d MMM yyyy");
+        container.appendChild(dueDate);
 
-        const priority = document.createElement("div");
-        priority.textContent = task.priority;
-        newTask.appendChild(priority);
-
-        // const project = document.createElement("div");
-        // project.textContent = task.project;
-        // newTask.appendChild(project);
-
-        const editButton = document.createElement("button");
-        editButton.textContent = "Edit";
-        editButton.classList = "edittask";
+        const editButton = document.createElement("img");
+        editButton.src = edit;
+        editButton.width = "25";
+        editButton.height = "25";
+        editButton.classList = "filter";
         editButton.addEventListener("click", (e) => {
             e.stopPropagation();
             edittitle.value = task.title;
@@ -57,11 +65,13 @@ const domHandler = (function() {
             edittitle.setCustomValidity("");
             edittask.showModal();
         });
-        newTask.appendChild(editButton);
+        container.appendChild(editButton);
 
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = "Delete";
-        deleteButton.classList = "deletetask";
+        const deleteButton = document.createElement("img");
+        deleteButton.src = deleteIcon;
+        deleteButton.width = "25";
+        deleteButton.height = "25";
+        deleteButton.classList = "red";
         deleteButton.addEventListener("click", (e) => {
             e.stopPropagation();
             toDos.deleteTask(task);
@@ -72,7 +82,9 @@ const domHandler = (function() {
                 showSelectedProjectTasks(task.project);
             }
         });
-        newTask.appendChild(deleteButton);
+        container.appendChild(deleteButton);
+
+        newTask.appendChild(container);
 
         newTask.addEventListener("click", () => {
             expandtitle.textContent = task.title;
@@ -92,8 +104,32 @@ const domHandler = (function() {
 
     const addNewProject = (name) => {
         const newProject = document.createElement("div");
-        newProject.textContent = name;
         newProject.classList = "pointer background";
+
+        const projectName = document.createElement("div");
+        projectName.textContent = name;
+        newProject.appendChild(projectName);
+
+        const trash = document.createElement("img");
+        trash.src = deleteSolid;
+        trash.width = "22";
+        trash.height = "22";
+        trash.classList = "show red";
+        trash.addEventListener("click", (e) => {
+            e.stopPropagation();
+            projects.deleteProject(name);
+            toDos.deleteProject(name);
+            if (projects.getCurrentProject() === "all") {
+                showAllProjects();
+            } else if (projects.getCurrentProject() === name) {
+                projects.setCurrentProject("all");
+                showAllProjects();
+            } else {
+                showSelectedProjectTasks(name);
+            }
+            displayProjectList();
+        });
+        newProject.appendChild(trash);
 
         newProject.addEventListener("click", () => {
             projects.setCurrentProject(newProject.textContent);
@@ -138,6 +174,7 @@ const domHandler = (function() {
     }
 
     const displayProjectList = () => {
+        projectsdisplay.innerHTML = "";
         const projectMap = projects.getProjectList();
         for (const [name, items] of projectMap) {
             addNewProject(name);
