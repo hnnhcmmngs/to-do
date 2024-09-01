@@ -39,6 +39,7 @@ const domHandler = (function() {
             checkbox.checked = false;
         }
         checkbox.addEventListener("click", (e) => {
+            console.log("HERE");
             toDos.toggleToDoStatus(task);
             e.stopPropagation();
         });

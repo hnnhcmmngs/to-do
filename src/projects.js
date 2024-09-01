@@ -79,6 +79,7 @@ const projects = (function() {
 
     const toggleToDoStatus = (task) => {
         const idx = projectList.get(task.project).findIndex(x => x.title === task.title);
+        console.log(idx);
         projectList.get(task.project)[idx].completed = !(projectList.get(task.project)[idx].completed);
         console.log(projectList.get(task.project));
         localStorage.setItem("projectMap", JSON.stringify(Array.from(projectList.entries())));

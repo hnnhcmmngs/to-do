@@ -61,9 +61,16 @@ const toDos = (function() {
 
     const toggleToDoStatus = (task) => {
         const idx = allTasksSorted.findIndex(x => x.title === task.title && x.project === task.project);
-        allTasksSorted[idx].completed = !(allTasksSorted[idx].completed);
-        projects.toggleToDoStatus(task);
+        const oldstatus = allTasksSorted[idx].completed;
+        allTasksSorted = allTasksSorted.map(todo => {
+            if (todo.title === task.title && todo.project === task.project) {
+                return { ...todo, completed: !oldstatus};
+            } else {
+                return todo;
+            }
+        });
         console.log(allTasksSorted);
+        projects.toggleToDoStatus(task);
         localStorage.setItem("taskList", JSON.stringify(allTasksSorted));
     }
 
