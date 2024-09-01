@@ -77,6 +77,13 @@ const projects = (function() {
         console.log(projectList);
     }
 
+    const toggleToDoStatus = (task) => {
+        const idx = projectList.get(task.project).findIndex(x => x.title === task.title);
+        projectList.get(task.project)[idx].completed = !(projectList.get(task.project)[idx].completed);
+        console.log(projectList.get(task.project));
+        localStorage.setItem("projectMap", JSON.stringify(Array.from(projectList.entries())));
+    }
+
     return {
         addProject,
         setCurrentProject,
@@ -88,7 +95,8 @@ const projects = (function() {
         setProjectList,
         deleteTaskFromProject,
         editTaskInProjet,
-        deleteProject
+        deleteProject,
+        toggleToDoStatus
     }
 })();
 

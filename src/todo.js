@@ -5,17 +5,18 @@ const toDos = (function() {
     let allTasksSorted = [];
 
     class ToDo {
-        constructor(title, description, dueDate, priority, project) {
+        constructor(title, description, dueDate, priority, project, completed) {
             this.title = title;
             this.description = description;
             this.dueDate = dueDate;
             this.priority = priority;
             this.project = project;
+            this.completed = completed;
         }
     }
 
     const addTask = (title, description, dueDate, priority, project) => {
-        const newTask = new ToDo(title, description, dueDate, priority, project);
+        const newTask = new ToDo(title, description, dueDate, priority, project, false);
         allTasksSorted.push(newTask);
         allTasksSorted.sort(function(a, b) {
             return new Date(a.dueDate) - new Date(b.dueDate);
@@ -58,13 +59,22 @@ const toDos = (function() {
         console.log(allTasksSorted);
     }
 
+    const toggleToDoStatus = (task) => {
+        const idx = allTasksSorted.findIndex(x => x.title === task.title && x.project === task.project);
+        allTasksSorted[idx].completed = !(allTasksSorted[idx].completed);
+        projects.toggleToDoStatus(task);
+        console.log(allTasksSorted);
+        localStorage.setItem("taskList", JSON.stringify(allTasksSorted));
+    }
+
     return {
         addTask,
         setTaskList,
         getTaskList,
         deleteTask,
         editTask,
-        deleteProject
+        deleteProject,
+        toggleToDoStatus
     }
 })();
 

@@ -33,7 +33,13 @@ const domHandler = (function() {
 
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
+        if (task.completed) {
+            checkbox.checked = true;
+        } else {
+            checkbox.checked = false;
+        }
         checkbox.addEventListener("click", (e) => {
+            toDos.toggleToDoStatus(task);
             e.stopPropagation();
         });
         checkboxWrapper.append(checkbox);
