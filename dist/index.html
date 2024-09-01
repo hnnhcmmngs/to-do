@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do</title>
+<script defer src="bundle.js"></script></head>
+<body>
+    <div id="header">
+        <div class="subhead">
+            <img id="logo" height="46px" alt="Checkbox" class="filter">
+            <div>ToDoist</div>
+        </div>
+        <div class="subhead">
+            <div class="cursor">Log in</div>
+            <button id="trial" class="cursor">Start free trial</button>
+        </div>
+    </div>
+    <div id="sidebar">
+        <div id="alltasks" class="pointer background active">All Tasks</div>
+        <div id="projectgroup">
+            <div id="projectheader">
+                <div>Projects</div>
+                <img id="newproject" class="pointer filter" height="36px" width="36px" alt="New project">
+            </div>
+            <div id="projects"></div>
+        </div>
+    </div>
+    <div id="display">
+        <div id="tasks"></div>
+        <img id="newtask" class="pointer filter" height="60px" width="60px" alt="New task">
+    </div>
+    <div id="footer">&copy; 2024 ToDoist. All rights reserved.</div>
+    <dialog id="taskinput">
+        <p>New To-Do Item</p>
+        <form method="dialog" id="taskform">
+            <div>
+                <label for="title">TITLE</label>
+                <input type="text" name="title" id="title" required>
+            </div>
+            <div>
+                <label for="description">DESCRIPTION</label>
+                <input type="text" name="description" id="description" required>
+            </div>
+            <div>
+                <label for="duedate">DUE DATE</label>
+                <input type="date" name="duedate" id="duedate" required>
+            </div>
+            <div>
+                <label for="priority">PRIORITY</label>
+                <select name="priority" id="priority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <div>
+                <input type="submit" id="addtask" class="validate" value="Add Task">
+                <input type="submit" id="taskcancel" class="cancel" value="Cancel" formnovalidate>
+            </div>
+        </form>
+    </dialog>
+    <dialog id="projectinput">
+        <p>New Project</p>
+        <form method="dialog" id="projectform">
+            <div>
+                <label for="name">NAME</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            <div>
+                <input type="submit" id="addproject" class="validate" value="Add Project">
+                <input type="submit" id="projectcancel" class="cancel" value="Cancel" formnovalidate>
+            </div>
+        </form>
+    </dialog>
+    <dialog id="expandtask">
+        <div>
+            <div id="expandtitle"></div>
+            <div id="expandproject"></div>
+        </div>
+        <div id="expanddesc"></div>
+        <div id="expanddate"></div>
+        <div id="expandpriority"></div>
+        <div><button id="expandclose" class="cancel">Close</button></div>
+    </dialog>
+    <dialog id="edittask">
+        <p>Edit To-Do Item</p>
+        <form method="dialog" id="editform">
+            <div>
+                <label for="edittitle">TITLE</label>
+                <input type="text" name="edittitle" id="edittitle" required>
+            </div>
+            <div>
+                <label for="editdescription">DESCRIPTION</label>
+                <input type="text" name="editdescription" id="editdescription" required>
+            </div>
+            <div>
+                <label for="editduedate">DUE DATE</label>
+                <input type="date" name="editduedate" id="editduedate" required>
+            </div>
+            <div>
+                <label for="editpriority">PRIORITY</label>
+                <select name="editpriority" id="editpriority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <div>
+                <input type="submit" id="updatetask" class="validate" value="Update Task">
+                <input type="submit" id="editcancel" class="cancel" value="Cancel" formnovalidate>
+            </div>
+        </form>
+    </dialog>
+</body>
+</html>
